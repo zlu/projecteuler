@@ -5,16 +5,17 @@ t1 = Time.now
 p = [2, 3, 5, 7, 11, 13]
 (p.max .. 1000000).step(2) do |i|
   j = 0
-  while (j < (p.length/2).ceil) && (i % p[j] != 0) do
+  stop = ((p.length+1)/2).ceil + 1
+  while j < stop && (i % p[j] != 0) do
     j = j + 1
   end
 
-  if j == (p.length/2).ceil
+  if j == stop
     p << i
   end
 
-  if p.length == 10001
-    puts p.max
+  if p.length == 10002
+    puts p.last
     break
   end
 end
